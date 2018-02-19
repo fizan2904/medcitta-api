@@ -27,8 +27,6 @@ export default {
 			return user;
 		}catch(e) {
 			console.log(e);
-			if(e.code === 11000)
-				throw new Error('Already a user');
 			throw new Error('Internal server Error');
 		}
 	}
