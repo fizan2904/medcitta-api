@@ -3,12 +3,13 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 
 import Schema from './Schema';
 
-app.all('/graph', graphqlExpress(req => ({
-	Schema
+app.all("/graph", graphqlExpress(req => ({
+  schema: Schema,
+  context: req.state
 })));
 
-app.all('/graphiql', graphiqlExpress(req => ({
-	endpointUrl: '/graph'
-})))
+app.all("/graphiql", graphiqlExpress({
+  endpointURL: "/graph",
+}));
 
 export default app;
